@@ -1,0 +1,10 @@
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+After this, close/reopen PowerShell and try:
+
+.\.venv\Scripts\Activate.ps1
+
+
+
+.\.venv\Scripts\python.exe seed_data.py
+
+.\.venv\Scripts\python.exe app.py

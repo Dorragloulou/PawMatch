@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PawMatch – All Pets</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="brand">
+      <i class="fas fa-paw logo"></i>
+      <span>PawMatch</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#questionnaire">Find Pets</a>
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="all-pets.html" class="active">All Pets</a>
+      <button id="theme-toggle" class="btn ghost" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+      </button>
+    </nav>
+  </header>
+
+  <section class="section compact-top">
+    <h2 class="section-title">Browse All Pets</h2>
+
+    <!-- Toolbar / Filters -->
+    <div class="toolbar">
+      <div class="toolbar-row">
+        <div class="search-wrap">
+          <i class="fas fa-search"></i>
+          <input id="search-text" class="search-input" type="text" placeholder="Search by name, breed or description…"/>
+        </div>
+
+        <select id="filter-type" class="select">
+          <option value="all">Type: All</option>
+          <option value="Dog">Dog</option>
+          <option value="Cat">Cat</option>
+          <option value="Rabbit">Rabbit</option>
+          <option value="Bird">Bird</option>
+          <option value="Hamster">Hamster</option>
+          <option value="Guinea Pig">Guinea Pig</option>
+          <option value="Turtle">Turtle</option>
+          <option value="other">Other</option>
+        </select>
+
+        <select id="filter-age" class="select">
+          <option value="any">Age: Any</option>
+          <option value="under-12">Under 1 year</option>
+          <option value="12-36">1–3 years</option>
+          <option value="37-72">3–6 years</option>
+          <option value="over-72">6+ years</option>
+        </select>
+
+        <select id="filter-size" class="select">
+          <option value="all">Size: All</option>
+          <option value="Small">Small</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
+        </select>
+
+        <select id="filter-activity" class="select">
+          <option value="all">Activity: All</option>
+          <option value="low">Low</option>
+          <option value="moderate">Moderate</option>
+          <option value="high">High</option>
+        </select>
+
+        <label class="check">
+          <input type="checkbox" id="filter-hypo"/>
+          <span>Hypoallergenic</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" id="filter-kids"/>
+          <span>Good with kids</span>
+        </label>
+
+        <select id="sort-all" class="select">
+          <option value="name-az">Sort: Name A–Z</option>
+          <option value="age-asc">Sort: Age (young → old)</option>
+          <option value="age-desc">Sort: Age (old → young)</option>
+          <option value="size">Sort: Size</option>
+        </select>
+
+        <button id="reset-filters" class="btn ghost sm"><i class="fas fa-rotate-left"></i> Reset</button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="all-pets-grid" class="results-grid"></div>
+
+    <p id="empty-state" class="empty-state" style="display:none;">
+      No pets match your filters. Try adjusting them ✨
+    </p>
+  </section>
+
+  <!-- Reuse modals (same IDs as index) -->
+  <div id="learnMoreModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeLearnMore">&times;</span>
+      <h2 id="petName"></h2>
+      <img id="petImage" src="" alt="" style="max-width: 100%; border-radius: 8px;">
+      <p><strong>Breed:</strong> <span id="petBreed"></span></p>
+      <p><strong>Age:</strong> <span id="petAge"></span></p>
+      <p><strong>Size:</strong> <span id="petSize"></span></p>
+      <p><strong>Temperament:</strong> <span id="petTemperament"></span></p>
+      <p><strong>Description:</strong> <span id="petDescription"></span></p>
+    </div>
+  </div>
+
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeContact">&times;</span>
+      <h2>Contact Shelter</h2>
+      <form id="contactForm">
+        <input type="hidden" id="contactPetName">
+        <label>Your Name : </label>
+        <input type="text" id="yourName" required>
+        <br>
+        <label>Your Email : </label>
+        <input type="email" id="yourEmail" required>
+        <br>
+        <label>Message : </label>
+        <textarea id="yourMessage" required></textarea>
+        <br>
+        <button type="submit"> Send </button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>2025 PawMatch - AI-Powered Pet Adoption Platform</p>
+    <p>Contact owner: glouloudorra7@gmail.com</p>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="all-pets.js"></script>
+</body>
+</html>

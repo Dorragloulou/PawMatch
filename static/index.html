@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawMatch - Find Your Perfect Pet</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="brand">
+            <i class="fas fa-paw logo"></i>
+            <span>PawMatch</span>
+        </a>
+        <nav class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="#questionnaire">Find Pets</a>
+            <a href="#how-it-works">How It Works</a>
+            <!-- 🔹 New link -->
+            <a href="all-pets.html">All Pets</a>
+            <button id="theme-toggle" class="btn ghost" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-bg">
+            <span class="bubble b1"></span>
+            <span class="bubble b2"></span>
+            <span class="bubble b3"></span>
+        </div>
+        <div class="hero-content">
+            <h1>Find Your Perfect Pet Match</h1>
+            <p>Our AI-powered recommendation system helps you find the ideal pet companion based on your lifestyle, home environment, and preferences.</p>
+            <div class="cta-group">
+                <a href="#questionnaire" class="btn primary">Get Started</a>
+                <a href="#how-it-works" class="btn outline">How It Works</a>
+                <!-- 🔹 CTA to All Pets -->
+                <a href="all-pets.html" class="btn ghost">Browse All Pets</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="section">
+        <h2 class="section-title">How It Works</h2>
+        <div class="features">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">📝</div>
+                <h3>Complete Questionnaire</h3>
+                <p>Tell us about your home, lifestyle, and preferences through our simple form.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Matching</h3>
+                <p>Our intelligent algorithm matches you with pets that fit your lifestyle perfectly.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🐾</div>
+                <h3>Meet Your Match</h3>
+                <p>Connect with shelters and schedule visits with your potential new best friend.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUESTIONNAIRE -->
+    <section id="questionnaire" class="section">
+        <h2 class="section-title">Find Your Perfect Pet</h2>
+        <div class="questionnaire">
+            <h3>Lifestyle Questionnaire</h3>
+            <form>
+                <div class="form-group">
+                    <label for="home-size">Home Size</label>
+                    <select id="home-size" required>
+                        <option value="">Select your home size</option>
+                        <option value="small">Small Apartment</option>
+                        <option value="medium">Medium-sized Home</option>
+                        <option value="large">Large House</option>
+                        <option value="very-large">Very Large House with Yard</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="kids">Children in Household</label>
+                    <select id="kids" required>
+                        <option value="">Select an option</option>
+                        <option value="none">No children</option>
+                        <option value="young">Young children (under 6)</option>
+                        <option value="older">Older children (6+)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="allergies">Allergies in Household</label>
+                    <select id="allergies" required>
+                        <option value="">Select an option</option>
+                        <option value="none">No allergies</option>
+                        <option value="mild">Mild allergies</option>
+                        <option value="severe">Severe allergies</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="activity">Activity Level</label>
+                    <select id="activity" required>
+                        <option value="">Select your activity level</option>
+                        <option value="low">Low (relaxed lifestyle)</option>
+                        <option value="moderate">Moderate (daily walks)</option>
+                        <option value="high">High (very active)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Pet Experience</label>
+                    <select id="experience" required>
+                        <option value="">Select your experience level</option>
+                        <option value="none">First-time owner</option>
+                        <option value="some">Some experience</option>
+                        <option value="experienced">Very experienced</option>
+                    </select>
+                </div>
+
+                <button type="button" id="recommend-btn" class="btn primary">Find My Matches</button>
+            </form>
+        </div>
+
+        <!-- RESULTS -->
+        <div id="results-container" class="results-container">
+            <div class="filters">
+                <div class="chip" id="chip-home-size"><i class="fas fa-home"></i> Home: <span></span></div>
+                <div class="chip" id="chip-kids"><i class="fas fa-child"></i> Kids: <span></span></div>
+                <div class="chip" id="chip-allergies"><i class="fas fa-allergies"></i> Allergies: <span></span></div>
+                <div class="chip" id="chip-activity"><i class="fas fa-running"></i> Activity: <span></span></div>
+                <div class="chip" id="chip-experience"><i class="fas fa-graduation-cap"></i> Experience: <span></span></div>
+                
+                <select id="sort-by" class="sort">
+                    <option value="score">Sort: Best Match</option>
+                    <option value="size">Sort: Size</option>
+                    <option value="activity">Sort: Activity Level</option>
+                </select>
+            </div>
+
+            <h3>Your Recommended Pets</h3>
+            <p>Based on your lifestyle, here are your perfect matches:</p>
+            
+            <div class="results-grid" id="pet-results">
+                <!-- Results generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal: Learn More -->
+    <div id="learnMoreModal" class="modal">
+      <div class="modal-content">
+          <span class="close" id="closeLearnMore">&times;</span>
+          <h2 id="petName"></h2>
+          <img id="petImage" src="" alt="" style="max-width: 100%; border-radius: 8px;">
+          <p><strong>Breed:</strong> <span id="petBreed"></span></p>
+          <p><strong>Age:</strong> <span id="petAge"></span></p>
+          <p><strong>Size:</strong> <span id="petSize"></span></p>
+          <p><strong>Temperament:</strong> <span id="petTemperament"></span></p>
+          <p><strong>Description:</strong> <span id="petDescription"></span></p>
+      </div>
+    </div>
+
+    <!-- Modal: Contact Shelter -->
+    <div id="contactModal" class="modal">
+      <div class="modal-content">
+          <span class="close" id="closeContact">&times;</span>
+          <h2>Contact Shelter</h2>
+          <form id="contactForm">
+          <input type="hidden" id="contactPetName">
+          <label>Your Name : </label>
+          <input type="text" id="yourName" required> 
+          <br>
+          <label>Your Email : </label>
+          <input type="email" id="yourEmail" required>
+          <br><label>Message : </label>
+          <textarea id="yourMessage" required></textarea>
+          <br>
+          <button type="submit"> Send </button>
+          </form>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>2025 PawMatch - AI-Powered Pet Adoption Platform</p>
+        <p>Contact owner: glouloudorra7@gmail.com</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
