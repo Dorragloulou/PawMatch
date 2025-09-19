@@ -31,7 +31,6 @@ def build_tfidf(pets):
 
 @app.route("/")
 def index():
-    # serves static/index.html
     return app.send_static_file("index.html")
 
 @app.route("/api/pets", methods=["GET"])
@@ -42,11 +41,9 @@ def api_pets():
 @app.route("/api/recommend", methods=["POST"])
 def api_recommend():
     prefs = request.get_json() or {}
-    # Load pets & build TF-IDF
     pets = load_pets()
     vectorizer, tfidf = build_tfidf(pets)
 
-    # Build a small text query from the user's preferences
     parts = []
     if prefs.get("home_size"): parts.append(prefs["home_size"])
     if prefs.get("activity"): parts.append(prefs["activity"])
